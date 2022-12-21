@@ -3,9 +3,9 @@ package main
 import (
 	"net/http"
 
-	"github.com/jsweet314/go-api-boilerplate/config"
-	"github.com/jsweet314/go-api-boilerplate/controllers"
-	"github.com/jsweet314/go-api-boilerplate/middleware"
+	"github.com/katochojiro/go-api-boilerplate/config"
+	"github.com/katochojiro/go-api-boilerplate/controllers"
+	"github.com/katochojiro/go-api-boilerplate/middleware"
 )
 
 func init() {
@@ -19,7 +19,7 @@ func main() {
 	http.ListenAndServe(
 		":8080",
 		&middleware.CORSMiddleware{
-			r,
+			Next: r,
 		},
 	)
 }

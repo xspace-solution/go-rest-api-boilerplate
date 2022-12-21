@@ -6,14 +6,26 @@ services:
       DB_NAME: postgres
       DB_USER: postgres
       DB_PASSWORD: docker
-      DB_HOST: 192.168.0.20
+      DB_HOST: 127.0.0.1
       DB_PORT: 5432
     ports:
       - 5432:5432
-    volumes: [~/docker/volumes/postgres:/var/lib/postgresql/data]
+    volumes: [ ~/docker/volumes/postgres:/var/lib/postgresql/data ]
+
   api:
-    image: jsweet314/go-api-boilerplate:latest
-    command: ["./wait-for-it.sh", "db:5432", "--", "go", "run", "main.go"]
+    image: backend_api:latest
+    build: .
+    container_name: backend_api
+    hostname: backend
+    command:
+      [
+        "./wait-for-it.sh",
+        "db:5432",
+        "--",
+        "go",
+        "run",
+        "main.go"
+      ]
     volumes:
       - .:/go/src/app
     ports:
@@ -23,7 +35,7 @@ services:
       DB_NAME: postgres
       DB_USER: postgres
       DB_PASSWORD: docker
-      DB_HOST: 192.168.0.20
+      DB_HOST: 127.0.0.1
       DB_PORT: 5432
     depends_on:
       - db
