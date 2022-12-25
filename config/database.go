@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/jsweet314/go-api-boilerplate/models"
+	"github.com/katochojiro/go-api-boilerplate/models"
 	_ "github.com/lib/pq"
 )
 

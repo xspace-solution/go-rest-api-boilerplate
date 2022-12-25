@@ -1,4 +1,4 @@
-module github.com/jsweet314/go-api-boilerplate
+module github.com/katochojiro/go-api-boilerplate
 
 go 1.13
 
